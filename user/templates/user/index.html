@@ -1,0 +1,14 @@
+
+{% extends 'user/base.html' %}
+
+{% block body %}
+    {% if all_events %}
+        <ul>
+            {% for event in all_events %}
+                <li><a href="{% url 'user:detail' event.id %}">{{ event.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2>No events</h2>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'user/base.html' %}
+
+{% block body %}
+    <div>
+
+        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'user/form-template.html' %}
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

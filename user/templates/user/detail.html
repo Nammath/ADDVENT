@@ -1,0 +1,14 @@
+
+{% extends 'user/base.html' %}
+
+{% block body %}
+    {% if event %}
+        <p>{{ event.name }}</p>
+        <p>{{ event.description }}</p>
+        <p>{{ event.event_date }}</p>
+        <p>{{ event.seats }}</p>
+
+    {% endif %}
+
+
+{% endblock %}
