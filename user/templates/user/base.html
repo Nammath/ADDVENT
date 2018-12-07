@@ -7,58 +7,26 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'user/style.css' %}">
+    {% block styles %}
+    {% endblock %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'user:index' %}">
-
-                <img src="{% static 'user/addvent_logo.png' %}" height="30" width="132">
-            </a>
+    <div id="header_container">
+        <div id="header_bar">
+            <img id="header_logo" src="{% static 'user/addvent_logo.png' %}" onclick="location.href='/';">
+            <button class="header_button" onclick="location.href = '{% url "user:register" %}';">Register</button>
+            <button class="header_button" href="#">Login</button>
+            <button class="header_button" onclick="location.href = '{% url "user:event-add" %}';">Add event</button>
         </div>
-
-        <div class="collapse navbar-collapse" id="topNavBar">
-            <ul class="nav navbar-nav">
-                <li class="">
-                    <a href="{% url 'user:index' %}">
-                        Events
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-
-
-        <ul class="nav navbar-nav navbar-right">
-            <li class="">
-                <a href="{% url 'user:event-add' %}">
-                    Add event
-                </a>
-            </li>
-            <li class="">
-                <a href="{% url 'user:register' %}">
-                    Register
-                </a>
-            </li>
-            <li class="">
-                <a href="#">
-                    Login
-                </a>
-            </li>
-        </ul>
     </div>
-</nav>
-{% block body %}
-{% endblock %}
+    {% block body %}
+    {% endblock %}
+    <div id="footer_container">
+        Created by ADDVENT team, 2018.
+    </div>
 
 </body>
 </html>

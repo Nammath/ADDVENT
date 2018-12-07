@@ -1,14 +1,51 @@
-
 {% extends 'user/base.html' %}
 
 {% block body %}
-    {% if all_events %}
-        <ul>
-            {% for event in all_events %}
-                <li><a href="{% url 'user:detail' event.id %}">{{ event.name }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <h2>No events</h2>
-    {% endif %}
+    <div id="crawler_container">
+        <input id="crawler_input" type="text" name="crawler" placeholder="Enter the name of the event...">
+        <button id="crawler_button">Search</button>
+    </div>
+    <div id="contents_container">
+        <div id="contents_featured">
+            <div id="featured_header">
+                Featured events:
+            </div>
+            <div id="featured_events">
+                {% if all_events %}
+                    {% for event in all_events|slice:":3" %}
+                        <div class="featured_events_photo">
+                        </div>
+                    {% endfor %}
+                    {% for event in all_events|slice:":3" %}
+                        <div class="featured_events_data">
+                            <a href="{% url 'user:detail' event.id %}">{{ event.name }}</a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h2>There aren't any featured events.</h2>
+                {% endif %}
+            </div>
+        </div>
+        {% if all_events %}
+        <div id="contents_categorized">
+            <div class="categorized_header">
+                Events:
+                <div class="header_underliner">
+                </div>
+            </div>
+            <div class="categorized_events">
+                {% for event in all_events %}
+                    <div class="categorized_events_photo">
+                    </div>
+                    <div class="categorized_events_data">
+                        <a href="{% url 'user:detail' event.id %}">{{ event.name }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+            <h2>There aren't any events.</h2>
+        {% endif %}
+    <div>
+
 {% endblock %}

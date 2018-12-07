@@ -1,15 +1,18 @@
 {% extends 'user/base.html' %}
 
-{% block body %}
-    <div>
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user/register.css' %}">
+{% endblock %}
 
-        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+{% block body %}
+    <div id="registration_container">
+        <form id="registration_form" action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% include 'user/form-template.html' %}
-            <div class="form-group">
-                <button type="submit">Submit</button>
+            <div>
+                <button class="button" type="submit">Register</button>
             </div>
-
         </form>
     </div>
 {% endblock %}

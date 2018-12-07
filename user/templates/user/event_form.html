@@ -1,14 +1,18 @@
 {% extends 'user/base.html' %}
 
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user/event.css' %}">
+{% endblock %}
+
 {% block body %}
-    <div>
-        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div id="event_container">
+        <form id="event_form" action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% include 'user/form-template.html' %}
-            <div class="form-group">
-                <button type="submit">Submit</button>
+            <div>
+                <button class="button" type="submit">Add event</button>
             </div>
-
         </form>
     </div>
 {% endblock %}

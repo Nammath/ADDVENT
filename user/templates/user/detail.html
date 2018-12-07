@@ -1,14 +1,26 @@
-
 {% extends 'user/base.html' %}
+
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user/detail.css' %}">
+{% endblock %}
 
 {% block body %}
     {% if event %}
-        <p>{{ event.name }}</p>
-        <p>{{ event.description }}</p>
-        <p>{{ event.event_date }}</p>
-        <p>{{ event.seats }}</p>
-
+        <div id="event_header">
+            Event – "{{ event.name }}":
+            <div id="header_underliner">
+            </div>
+        </div>
+        <div id="event_data">
+            <div id="event_photo">
+            </div>
+            <div id="event_text">
+                <p>Name: {{ event.name }}</p>
+                <p>Description: {{ event.description }}</p>
+                <p>Date: {{ event.event_date }}</p>
+                <p>Number of seats: {{ event.seats }}</p>
+            </div>
+        </div>
     {% endif %}
-
-
 {% endblock %}

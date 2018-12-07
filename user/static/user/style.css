@@ -1,4 +1,181 @@
-body{
-    background: white url(background.jpg);
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
+/* CSS rules for header container and its elements.*/
+#header_container
+{
+    width: 100%;
+    height: 100px;
+    background: white;
+}
+#header_bar
+{
+    width: 1000px;
+    height: 100%;
+    margin-left: calc((100% - 1000px) / 2);
+}
+#header_logo
+{
+    height: 60px;
+    margin-top: 20px;
+    margin-left: calc((100% - 260px) / 2);
+}
+.header_button
+{
+    float: right;
+    width: 100px;
+    height: 40px;
+    margin-top: 30px;
+    margin-left: 5px;
+    background: #b01966;
+    color: white;
+}
+
+/* CSS rules for searchbar container and its elements. */
+#crawler_container
+{
+    width: 100%;
+    height: 50px;
+    background: #373737;
+}
+#crawler_input
+{
+    width: 895px;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: calc((100% - 1000px) / 2);
+}
+#crawler_button
+{
+    width: 100px;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 5px;
+    background: #b01966;
+    color: white;
+}
+
+/* CSS rules for contents containter and its elements. */
+#contents_container
+{
+    width: 100%;
+    min-height: 1050px;
+    background: white;
+    line-height: 100px;
+}
+#contents_featured
+{
+    width: 100%;
+    height: 525px;
+    background: #b01966;
+}
+#featured_header
+{
+    width: 100%;
+    height: 50px;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+}
+#featured_events
+{
+    width: 780px;
+    height: 450px;
+    margin-left: calc((100% - 780px) / 2);
+}
+.featured_events_photo
+{
+    float: left;
+    width: 250px;
+    height: 400px;
+    background: #4d2236;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.featured_events_data
+{
+    float: left;
+    width: 250px;
+    height: 50px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 25px;
+}
+
+#contents_categorized
+{
+    width: 100%;
+    background: white;
+}
+.categorized_header
+{
+    width: 1000px;
+    height: 50px;
+    margin-left: calc((100% - 1000px) / 2);
+    color: black;
+    font-size: 24px;
+    text-align: left;
+    line-height: 40px;
+}
+.header_underliner
+{
+    position: absolute;
+    width: 1000px;
+    height: 5px;
+    background: #b01966;
+}
+.categorized_events
+{
+    width: 1000px;
+    min-height: 50px;
+    margin-left: calc((100% - 1000px) / 2);
+}
+.categorized_events_photo
+{
+    float: left;
+    width: 100px;
+    height: 150px;
+    background: #4d2236;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.categorized_events_data
+{
+    width: 890px;
+    height: 155px;
+}
+
+/* CSS ruler for footer container and its contents. */
+#footer_container
+{
+    width: 1000px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: calc((100% - 1000px) / 2);
+    background: #b01966;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+
+/* CSS rules for additional elements. */
+
+.button
+{
+    width: 100px;
+    height: 40px;
+    margin-left: 5px;
+    background: #b01966;
+    color: white;
+}

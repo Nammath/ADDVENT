@@ -1,0 +1,22 @@
+#registration_container
+{
+    width: 1000px;
+    min-height: 50px;
+    margin-left: calc((100% - 1000px) / 2);
+    background: #b01966;
+    color: white;
+}
+#registration_form
+{
+    width: 150px;
+    margin: 5px;
+    margin-top: 5px;
+    margin-left: calc((100% - 150px) / 2);
+}
+
+.button
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+}
