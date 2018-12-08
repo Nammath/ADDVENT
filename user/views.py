@@ -3,7 +3,7 @@ from django.views.generic import CreateView, View
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
-from .forms import UserCreate, UserLoginForm
+from .forms import UserCreate, LoginForm
 from .models import User, Event
 
 
@@ -27,13 +27,15 @@ class EventCreate(CreateView):
 
 
 def login_view(request):
-    form = UserLoginForm(request.POST or None)
+    form = LoginForm(request.POST or None)
+    context = {"form": form}
     if form.is_valid():
-        username = form.cleaned_data.get('login')
+        email = form.cleaned_data.get('email')
         password = form.cleaned_data.get('password')
-        user = authenticate(login=username, password=password)
-        login(request, user)
-    return render(request, 'user/register_form.html', {'form': form})
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+    return render(request, 'user/register_form.html', context)
 
 
 def register_view(request):
@@ -43,9 +45,13 @@ def register_view(request):
             user = form.save(commit=False)
 
             login_name = form.cleaned_data.get('login')
-            password_unhashed = form.cleaned_data.get('password')
-            user.set_password(password_unhashed)
-            user.save()
+            password = form.cleaned_data.get('password')
+            email = form.cleaned_data.get('email')
+            user.set_password(password)
+            user.login = login_name
+            form.save()
+            #user = authenticate(email=email, password=password)
+            #login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
     else:
         form = UserCreate()

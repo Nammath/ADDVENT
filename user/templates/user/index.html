@@ -1,6 +1,7 @@
 {% extends 'user/base.html' %}
 
 {% block body %}
+    {{ user.get_username }}
     <div id="crawler_container">
         <input id="crawler_input" type="text" name="crawler" placeholder="Enter the name of the event...">
         <button id="crawler_button">Search</button>
