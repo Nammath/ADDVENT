@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import authenticate, login, logout
-from .models import User
+from .models import User, Event, Venue, Category
 
 
 class RegisterForm(forms.ModelForm):
@@ -45,6 +45,18 @@ class UserCreate(forms.ModelForm):
         model = User
         fields = ('login', 'password', 'email',)
 
+class EventCreate(forms.ModelForm):
+    name = forms.CharField(max_length=100)
+    description = forms.CharField(max_length=1000)
+    event_date = forms.DateField()
+    seats = forms.IntegerField()
+    image = forms.CharField(max_length=500)
+    #venue = forms.ModelChoiceField(queryset=Venue.objects.all())
+    #category = forms.ModelChoiceField(queryset=Category.objects.all())
+
+    class Meta:
+        model = Event
+        fields = ['name', 'description', 'event_date', 'seats', 'image', 'venue_id', 'category_id']
 
 class UserLoginForm(forms.ModelForm):
     email = forms.CharField()

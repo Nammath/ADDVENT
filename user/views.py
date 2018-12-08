@@ -3,7 +3,7 @@ from django.views.generic import CreateView, View
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
-from .forms import UserCreate, LoginForm
+from .forms import UserCreate, LoginForm, EventCreate
 from .models import User, Event
 
 
@@ -21,9 +21,22 @@ class DetailView(generic.DetailView):
     template_name = 'user/detail.html'
 
 
-class EventCreate(CreateView):
-    model = Event
-    fields = ['name', 'description', 'event_date', 'seats', 'image', 'venue_id', 'owner_id', 'category_id']
+def event_create(request):
+    form = EventCreate(request.POST or None)
+    context = {'form': form}
+    if form.is_valid():
+        event = form.save(commit=False)
+        event.name = form.cleaned_data.get('name')
+        event.description = form.cleaned_data.get('description')
+        event.event_date = form.cleaned_data.get('event_date')
+        event.image = form.cleaned_data.get('image')
+        event.venue_id = form.cleaned_data.get('venue_id')
+        event.category_id = form.cleaned_data.get('category_id')
+        event.owner_id = request.user
+        form.save()
+    else:
+        form = EventCreate()
+    return render(request, 'user/event_form.html', context)
 
 
 def login_view(request):

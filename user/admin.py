@@ -21,6 +21,7 @@ admin.site.register(Category)
 admin.site.register(UserType)
 
 
+
 """class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm

@@ -83,18 +83,6 @@ class User(AbstractBaseUser):
     @property
     def is_active(self):
         return self.active
-    """objects = UserManager()
-    login = models.CharField(max_length=250)
-    password = models.CharField(max_length=25)
-    email = models.CharField(max_length=100)
-    type_id = models.ForeignKey(UserType, on_delete=models.CASCADE, null=True)
-
-
-
-    #USERNAME_FIELD = 'login'
-
-    def __str__(self):
-        return self.login + ' ' + self.email"""
 
 
 class Venue(models.Model):
@@ -119,9 +107,9 @@ class Event(models.Model):
     event_date = models.DateField(default=date.today)
     seats = models.IntegerField()
     image = models.CharField(max_length=500)
-    venue_id = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True)
+    venue_id = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True, db_constraint=False)
     owner_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    category_id = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    category_id = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, db_constraint=False)
     is_favorite = models.BooleanField(default=False)
 
     def get_absolute_url(self):
