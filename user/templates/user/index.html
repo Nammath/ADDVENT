@@ -1,7 +1,11 @@
 {% extends 'user/base.html' %}
 
 {% block body %}
-    {{ user.get_username }}
+    {% if user.is_authenticated %}
+        <div id="header_user_data">
+            Logged as: {{ user.get_username }}.
+        </div>
+    {% endif %}
     <div id="crawler_container">
         <input id="crawler_input" type="text" name="crawler" placeholder="Enter the name of the event...">
         <button id="crawler_button">Search</button>
@@ -23,7 +27,9 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <h2>There aren't any featured events.</h2>
+                    <div id="featured_events_message">
+                        <h2>There aren't any featured events.</h2>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -45,7 +51,17 @@
             </div>
         </div>
         {% else %}
-            <h2>There aren't any events.</h2>
+
+            <div id="contents_categorized">
+            <div class="categorized_header">
+                Events:
+                <div class="header_underliner">
+                </div>
+            </div>
+            <div class="categorized_events">
+                <h2>There aren't any events.</h2>
+            </div>
+        </div>
         {% endif %}
     <div>
 
